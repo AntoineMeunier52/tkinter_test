@@ -60,10 +60,18 @@ class Menu():
 		self.build_menu()
 
 	def build_menu(self):
-		Label(self._frame, text="Maze Solver", font=("roboto", 40), bg="white", fg="black").pack()
-		Label(self._frame, text="Enter the size of the maze", font=("roboto", 16), bg="white", fg="black").pack()
-		Label(self._frame, text="X and Y must be between 10 and 40.", font=("courrier", 10), bg="white", fg="black").pack()
-		Button(self._frame, text="change view", command=self._start_maze).pack()
+		Label(self._frame, text="Maze Solver", font=("roboto", 40), bg="white", fg="black").grid(row=0)
+		maze_size_frame = Frame(self._frame, width=200, height=100, bg="white")
+		maze_size_frame.grid(row=1)
+		Label(maze_size_frame, text="Enter the size of the maze", font=("roboto", 16), bg="white", fg="black").grid(row=0, column=0)
+		Label(maze_size_frame, text="X and Y must be between 10 and 40.", font=("roboto", 10), bg="white", fg="black").grid(row=1, column=0)
+
+		x_y_frame = Frame(maze_size_frame, width=200, height=100, bg="white")
+		x_y_frame.grid(row=2)
+		Label(x_y_frame, text="X: ", bg="white", fg="Black", font=("roboto", 12)).grid(row=0, column=0)
+		Label(x_y_frame, text="Y: ", bg="white", fg="Black", font=("roboto", 12)).grid(row=0, column=1)
+
+		Button(self._frame, text="change view", command=self._start_maze).grid(row=2)
 	def _start_maze(self):
 		self._start_callback()
 
